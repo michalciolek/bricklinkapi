@@ -121,7 +121,12 @@ public abstract class AbstractBricklinkService {
 		if (parameters != null) {
 			StringBuilder params = new StringBuilder();
 			for (Entry<String, String> param : parameters.entrySet()) {
-				params.append(param.getKey() + "=" + param.getValue());
+				if (params.length() > 0){
+					params.append('&');
+				}
+				params.append(param.getKey())
+						.append("=")
+						.append(param.getValue());
 			}
 			baseUrl = baseUrl + "?" + params;
 		}

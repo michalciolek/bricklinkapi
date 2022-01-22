@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import org.dajlab.bricklinkapi.v1.enumeration.NewOrUsed;
 import org.dajlab.bricklinkapi.v1.enumeration.Type;
 import org.dajlab.bricklinkapi.v1.service.impl.CatalogItemServiceImpl;
 import org.dajlab.bricklinkapi.v1.vo.Item;
@@ -107,6 +108,7 @@ public class CatalogItemServiceTest {
 
 			PriceGuideParametersRequest param = new PriceGuideParametersRequest();
 			param.setColorId(11);
+			param.setNewOrUsed(NewOrUsed.NEW);
 			price = service.getPrice(Type.PART, "3001", param);
 			System.out.println("Avg price for 3001 in color 11 : " + price.getAvgPrice());
 		} catch (Exception e) {
@@ -132,6 +134,7 @@ public class CatalogItemServiceTest {
 			for (String part : parts.keySet()) {
 				PriceGuideParametersRequest param = new PriceGuideParametersRequest();
 				param.setColorId(parts.get(part));
+				param.setNewOrUsed(NewOrUsed.NEW);
 				price = service.getPrice(Type.PART, part, param);
 				if (price != null) {
 					System.out.println(
